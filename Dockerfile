@@ -5,6 +5,9 @@ FROM nixos/nix:2.19.2
 LABEL org.opencontainers.image.name="nix-builder"
 LABEL org.opencontainers.image.authors="Adrien Navratil <id@litarvan.com>, Daiderd Jordan <daiderd@gmail.com>"
 
+# ARM machines does not support seccomp
+RUN echo "filter-syscalls = false" >> /etc/nix/nix.conf
+
 RUN nix-env -iA nixpkgs.openssh nixpkgs.gnused && \
     nix-collect-garbage -d
 

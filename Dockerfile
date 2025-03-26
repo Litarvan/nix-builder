@@ -17,7 +17,6 @@ RUN mkdir -p /etc/ssh /var/empty /run /root/.ssh && \
     echo "PermitRootLogin yes" >> /etc/ssh/sshd_config && \
     sed -i "s/root:!:/root:*:/g" /etc/shadow && \
     ssh-keygen -f /etc/ssh/ssh_host_rsa_key -N "" -t rsa && \
-    ssh-keygen -f /etc/ssh/ssh_host_dsa_key -N "" -t dsa && \
     ssh-keygen -f /etc/ssh/ssh_host_ed25519_key -N "" -t ed25519 && \
     echo "source /root/.nix-profile/etc/profile.d/nix.sh" >> /etc/bashrc && \
     echo "source /etc/bashrc" >> /etc/profile

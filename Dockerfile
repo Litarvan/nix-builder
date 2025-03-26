@@ -1,6 +1,6 @@
 # Derived from: https://github.com/LnL7/nix-docker/blob/master/ssh/Dockerfile
 
-FROM nixos/nix:2.19.2
+FROM nixos/nix:2.27.1
 
 LABEL org.opencontainers.image.name="nix-builder"
 LABEL org.opencontainers.image.authors="Adrien Navratil <id@litarvan.com>, Daiderd Jordan <daiderd@gmail.com>"

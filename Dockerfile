@@ -6,7 +6,11 @@ LABEL org.opencontainers.image.name="nix-builder"
 LABEL org.opencontainers.image.authors="Adrien Navratil <id@litarvan.com>, Daiderd Jordan <daiderd@gmail.com>"
 
 # ARM machines does not support seccomp
-RUN echo "filter-syscalls = false" >> /etc/nix/nix.conf
+# Add parallelism configuration for faster builds
+RUN echo "filter-syscalls = false" >> /etc/nix/nix.conf && \
+    echo "max-jobs = auto" >> /etc/nix/nix.conf && \
+    echo "cores = 0" >> /etc/nix/nix.conf && \
+    echo "build-cores = 0" >> /etc/nix/nix.conf
 
 RUN nix-env -iA nixpkgs.openssh nixpkgs.gnused && \
     nix-collect-garbage -d
